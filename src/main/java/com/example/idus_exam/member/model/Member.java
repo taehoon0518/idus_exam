@@ -32,6 +32,10 @@ public class Member implements UserDetails {
     @OneToMany(mappedBy = "member")
     private List<Orders> orders;
 
+    public void verify() {
+        this.enabled = true;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
