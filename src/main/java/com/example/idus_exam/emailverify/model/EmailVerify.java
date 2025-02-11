@@ -1,24 +1,25 @@
-package com.example.idus_exam.order;
+package com.example.idus_exam.emailverify.model;
 
 import com.example.idus_exam.member.model.Member;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 
-@Entity
+@Builder
 @Getter
-public class Orders {
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class EmailVerify {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
-    private String orderName;
-    private String orderAddress;
-    private LocalDateTime orderTime;
 
     @ManyToOne
     @JoinColumn(name = "member_idx")
     private Member member;
-
-
+    private String uuid;
 }
