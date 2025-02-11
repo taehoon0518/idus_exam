@@ -39,6 +39,7 @@ public class SecurityConfig {
                         .requestMatchers("/course/register").hasRole("INSTRUCTOR")
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/member/signup", "/member/login", "/member/verify").permitAll()
+                        .requestMatchers("/member/**").permitAll()
                         .anyRequest().authenticated()
         );
         

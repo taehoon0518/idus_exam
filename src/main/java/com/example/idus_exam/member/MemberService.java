@@ -47,4 +47,10 @@ public class MemberService implements UserDetailsService {
             memberRepository.save(member);
         }
     }
+
+    @Transactional(readOnly = true)
+    public MemberDto.ReadResponse details(int idx) {
+        Member member = memberRepository.findByIdx(idx).orElseThrow();
+        return MemberDto.ReadResponse.from(member);
+    }
 }

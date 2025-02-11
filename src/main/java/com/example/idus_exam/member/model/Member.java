@@ -29,7 +29,6 @@ public class Member implements UserDetails {
     private String gender;
     private boolean enabled;
 
-
     @OneToMany(mappedBy = "member")
     private List<Orders> orders;
 
@@ -60,5 +59,9 @@ public class Member implements UserDetails {
     @Override
     public String getUsername() {
         return email;
+    }
+
+    public void verify() {
+        this.enabled = true;
     }
 }
