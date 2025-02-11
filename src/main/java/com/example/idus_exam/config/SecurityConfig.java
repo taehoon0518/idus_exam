@@ -37,6 +37,7 @@ public class SecurityConfig {
                         .requestMatchers("/swagger", "/swagger-ui.html", "/swagger-ui/**", "/api-docs", "/api-docs/**", "/v3/api-docs/**")
                         .permitAll()
                         .requestMatchers("/course/register").hasRole("INSTRUCTOR")
+                        .requestMatchers("/login").permitAll()
                         .requestMatchers("/member/signup", "/member/login", "/member/verify").permitAll()
                         .anyRequest().authenticated()
         );
