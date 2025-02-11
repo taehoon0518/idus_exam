@@ -60,8 +60,4 @@ public class Member implements UserDetails {
     public String getUsername() {
         return email;
     }
-
-    public void verify() {
-        this.enabled = true;
-    }
 }
