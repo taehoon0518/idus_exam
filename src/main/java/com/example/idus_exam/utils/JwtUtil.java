@@ -5,13 +5,15 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 
 public class JwtUtil {
-    private static final String SECRET = "abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789";
-    private static final int EXP = 30 * 60 * 1000;
-
+    @Value("${jwt.secret}")
+    private static String SECRET;
+    @Value("${jwt.expired}")
+    private static int EXP;
 
     public static Member getMember(String token) {
         try {
