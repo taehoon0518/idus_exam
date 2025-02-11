@@ -43,6 +43,7 @@ public class MemberService implements UserDetailsService {
     public void verify(String uuid) {
         Member member = emailVerifyService.verify(uuid);
         if(member != null) {
+            member.verify();
             memberRepository.save(member);
         }
     }

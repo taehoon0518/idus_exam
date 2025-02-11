@@ -27,9 +27,15 @@ public class Member implements UserDetails {
     private String phoneNum;
     private String email;
     private String gender;
+    private boolean enabled;
+
 
     @OneToMany(mappedBy = "member")
     private List<Orders> orders;
+
+    public void verify() {
+        this.enabled = true;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
