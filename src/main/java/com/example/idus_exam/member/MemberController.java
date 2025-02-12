@@ -6,6 +6,8 @@ import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/member")
@@ -26,5 +28,12 @@ public class MemberController {
     public ResponseEntity<MemberDto.ReadResponse> details(@PathVariable int idx) {
         MemberDto.ReadResponse response = memberService.details(idx);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<MemberDto.listResponse>> list(int page, int size) {
+        List<MemberDto.listResponse> response = memberService.memberList(page, size);
+        return ResponseEntity.ok(response);
+
     }
 }

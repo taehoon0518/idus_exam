@@ -4,6 +4,8 @@ import com.example.idus_exam.emailverify.EmailVerifyService;
 import com.example.idus_exam.member.model.Member;
 import com.example.idus_exam.member.model.MemberDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -54,5 +58,10 @@ public class MemberService implements UserDetailsService {
     public MemberDto.ReadResponse details(int idx) {
         Member member = memberRepository.findByIdx(idx).orElseThrow();
         return MemberDto.ReadResponse.from(member);
+    }
+
+    public List<MemberDto.listResponse> memberList(int page, int size) {
+        Page<Member> result = memberRepository.findAll(PageRequest.of(page, size));
+        return result.getContent().stream().map(MemberDto.listResponse::from).toList();
     }
 }
