@@ -28,6 +28,7 @@ public class MemberService implements UserDetailsService {
 
     }
 
+    @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Member> result = memberRepository.findByEmail(username);
@@ -40,6 +41,7 @@ public class MemberService implements UserDetailsService {
         return null;
     }
 
+    @Transactional
     public void verify(String uuid) {
         Member member = emailVerifyService.verify(uuid);
         if(member != null) {
