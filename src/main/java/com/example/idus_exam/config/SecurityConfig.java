@@ -40,6 +40,7 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/member/signup", "/member/login", "/member/verify").permitAll()
                         .requestMatchers("/member/**").permitAll()
+                        .requestMatchers("/orders/**").permitAll()
                         .anyRequest().authenticated()
         );
         

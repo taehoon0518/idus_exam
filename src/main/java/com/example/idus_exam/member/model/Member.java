@@ -1,6 +1,6 @@
 package com.example.idus_exam.member.model;
 
-import com.example.idus_exam.order.Orders;
+import com.example.idus_exam.order.model.Orders;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
